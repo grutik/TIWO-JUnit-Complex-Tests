@@ -2,10 +2,18 @@ package cplx;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.junit.Before;
 
 public class ComplexTest{
 
 	private static double eps = 1e-12;
+	private Complex c1,c2;
+
+	@Before
+	public void init(){
+		c1 = new Complex(1.0,2.0);
+		c2 = new Complex(2.0,1.0);
+	}
 
 	@Test
 	public void testComplexConstructorNoParams(){
@@ -31,8 +39,6 @@ public class ComplexTest{
 
 	@Test
 	public void testComplexAddStatic(){
-		Complex c1 = new Complex(1.0,2.0);
-		Complex c2 = new Complex(2.0,1.0);
 		Complex c3 = Complex.add(c1,c2);
 		
 		assertEquals("Re obiektu c3 == 3.0",c3.getRe(),3.0,eps);
@@ -41,12 +47,10 @@ public class ComplexTest{
 
 	@Test
 	public void testComplexAddDynamic(){
-		Complex c1 = new Complex(1.0,2.0);
-		Complex c2 = new Complex(2.0,1.0);
 		c1.add(c2);
 		
 		assertEquals("Re obiektu c1 == 3.0",c1.getRe(),3.0,eps);
-		assertEquals("Im obiektu c1 == 2.0",c1.getIm(),2.0,eps);
+		assertEquals("Im obiektu c1 == 2.0",c1.getIm(),3.0,eps);
 	}
 
 }
